@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+ 
+
+	<title>Business.Com</title>
+
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+
+	<meta name="keywords" content="" />	
+	<meta name="description" content="" />
+	<meta name="robots" content="" /><!-- change into index, follow -->
+    
+	<!--[if lte IE 6]>
+        <script type="text/javascript" src="javascripts/pngfix.js"></script>
+        <script type="text/javascript" src="javascripts/ie6.js"></script>
+        <link rel="stylesheet" href="stylesheets/ie6.css" type="text/css" />
+	<![endif]-->
+
+    
+
+
+    <link href="stylesheets/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+    <form id="form1" runat="server">
+
+<!--  / WRAPPER \ -->
+<div id="wrapper">
+	
+	<!--  / MAIN CONTAINER \ -->
+  <div id="mainCntr">
+		
+		<!--  / HEADER CONTAINER \ -->
+		<div id="headerCntr">		  
+          <!-- / LOGO \ -->
+			<div class="logo"> <a href="index.html"><img src="images/logo.jpg" alt="logo" /></a> </div>
+		  <!-- \ LOGO / -->
+ 			<!-- / MENU CONTAINER \ -->
+				 <div class="menuCntr">
+				   <ul>
+					<li><a href="about-us.html">Home</a></li>
+					<li><a href="askquestions.aspx">Ask questions</a></li>
+					<li><a href="showmysolutions.aspx">View Solutions</a></li>
+					<li><a href="projects.html">Projects</a></li>
+					<li style="background:none;"><a href="blanklogout.aspx">Log out</a></li>
+				  </ul>
+				</div>
+			    <!-- \  MENU CONTAINER  /-->  
+		  		<span class="headertxt">
+				Managed <span class="header2txt">Solutions</span><br />Reliable Scalable and Effective
+				</span>
+      </div>
+	  <!--  \ HEADER CONTAINER / -->
+      <!--  / CONTENT CONTAINER \ -->
+      <div id="contentCntr">
+          <div id="leftCntr">
+            <div class="leftmenuCntr">
+              <ul>
+                <li><a href="composemsg.aspx">compose mail</a></li>
+                <li><a href="inbox.aspx">inbox</a></li>
+                <li><a href="draft.aspx">drafts</a></li>
+                <li><a href="sent.aspx">sent mail</a></li>
+                <li><a href="allmail.aspx">all mail</a></li>
+                <li><a href="trash.aspx">trash</a></li>
+                  <li></li>
+              </ul>
+            </div>
+            <!-- / LEFT MENU CONTAINER BOX \ -->
+            <!-- \ LEFT MENU CONTAINER BOX  /-->
+            <!--  / news box \ -->
+            <h2>Chat</h2>
+                    
+                    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                        <ContentTemplate>
+                            <table class="style1">
+                                <%
+                                    DatabaseAccess da = new DatabaseAccess();
+                                    System.Data.DataSet ds = new System.Data.DataSet();
+                                    ds = da.getData("select * from tbl_user");
+                                    
+
+                                        for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                                        {
+                                            if (int.Parse(Session["FromUserID"].ToString()) == int.Parse(ds.Tables[0].Rows[i].ItemArray.GetValue(0).ToString()))
+                                            {
+                                                continue;
+                                            }
+                                            
+                                     %>
+                                
+                                <tr>
+                                    <td class="style2">
+                                    <%
+                                        
+if (int.Parse(ds.Tables[0].Rows[i].ItemArray.GetValue(11).ToString()) == 1) //login check
+{
+                                            
+                                       
+                                         %>
+                                        <img alt="" src="images/download.jfif" width=10 height=10 />
+                                        <%
+}
+else
+{
+                                            
+                                            
+                                             %>
+                                             <img alt="" src="images/images.jfif" width=10 height=10 />
+                                             <%
+} 
+                                        %>
+                                    </td>
+
+                                    <td>
+
+                                      <a href="chat.aspx?contact_user_id=<%=ds.Tables[0].Rows[i].ItemArray.GetValue(0).ToString()%>" 
+                                            style="font-family: 'Times New Roman', Times, serif; font-size: medium; font-style: inherit">  <%=ds.Tables[0].Rows[i].ItemArray.GetValue(1).ToString()%></a></td>
+                                </tr>
+
+                                <% 
+                                 
+                                        }
+                                    %>
+                            </table>
+                        </ContentTemplate>
+
+                    </asp:UpdatePanel>
+                    
+            <!--  \ news box / -->
+          </div>
+          <!--  / LEFT CONTAINER \ -->
+          <!--  \ LEFT CONTAINER / -->
+          <!--  / RIGHT CONTAINER \ -->
+          <div id="rightCntr">
+        
+				<div class="innertext">
+				<h1>About Us</h1>
+				<div>
+				<img src="images/photo-about.jpg" alt="" width="177" height="117" class="aboutus-img" /><br />
+				Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin  sed odio et ante adipiscing lobortis. Quisque eleifend, arcu a dictum  varius, risus neque venenatis arcu, a semper massa mi eget ipsum.<br />
+				<br />
+				Lorem  ipsum dolor sit amet, consectetuer adipiscing elit. Proin sed odio et  ante adipiscing lobortis. Quisqueeleifend, arcu a dictum varius, risus  neque venenatis arcu, a semper massa mi eget ipsum. Proin sed odio et  ante adipiscing lobortis. Lorem ipsum dolor sit amet, consectetuer  adipiscing elit. Proin sed odio et ante adipiscing lobortis. Quisque  eleifend, arcu a dictum varius, risus neque venenatis arcu, a semper  massa mi eget ipsum. Proin sed odio et ante adipiscing lobortis. <br />
+				<br />
+				<br />
+				<div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+				<div>
+				<h5>Our Values</h5>
+				<div>Quisque eleifend, arcu a dictum varius, risus neque venenatis arcu, a  semper massa mi eget ipsum. Proin sed odio et ante adipiscing lobortis.  Proin sed odio et ante adipiscing lobortis. Lorem ipsum dolor sit amet,  consectetuer adipiscing elit. Proin sed odio et ante adipiscing  lobortis.</div>
+				</div>
+				<div class="clear"></div>
+				<div class="aboutcolumnzone">
+				<div class="aboutcolumn1">
+				<div>
+				  <h5>Customer Service</h5>
+				  <img src="images/ico-med-1.png" alt="" class="abouticon" /> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin sed  odio et ante adipiscing lobortis. Quisque eleifend, arcu a dictum  varius,
+				  <div class="insidereadmore"><a href="#">Read More...</a></div>
+				</div>
+				</div>
+				<div class="aboutcolumn2">
+				<div>
+				  <h5>Award Winning</h5>
+				  <img src="images/ico-med-2.png" alt="" class="abouticon" /> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin sed  odio et ante adipiscing lobortis. Quisque eleifend, arcu a dictum  varius,
+				  <div class="insidereadmore"><a href="#">Read More...</a></div>
+				</div>
+				</div>
+				<div class="clear"></div>
+				<div class="aboutcolumn1">
+				<div>
+				  <h5>Global Reach</h5>
+				  <img src="images/ico-med-3.png" alt="" class="abouticon" /> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin sed  odio et ante adipiscing lobortis. Quisque eleifend, arcu a dictum  varius,
+				  <div class="insidereadmore"><a href="#">Read More...</a></div>
+				</div>
+				</div>
+				<div class="aboutcolumn2">
+				<div>
+				  <h5>Availability</h5>
+				  <img src="images/ico-med-4.png" alt="" class="abouticon" /> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin sed  odio et ante adipiscing lobortis. Quisque eleifend, arcu a dictum  varius,
+				  <div class="insidereadmore"><a href="#">Read More...</a></div>
+				</div>
+				</div>
+				<div class="clear"></div>
+				</div>
+				<div>
+				<h5>Our Commitment</h5>
+				<div> Quisque eleifend, arcu a dictum varius, risus neque venenatis arcu, a semper massa mi eget ipsum. Proin sed odio et ante adipiscing lobortis. Proin sed odio et ante adipiscing lobortis. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin sed odio et ante adipiscing lobortis. </div>
+				</div>
+				
+				</div>
+         
+          </div>
+          <!--  \ RIGHT CONTAINER / -->
+        </div>
+      <!--  \ CONTENT CONTAINER / -->
+    </div>
+	<!--  \ MAIN CONTAINER / -->
+
+		<!--  / FOOTER CONTAINER \ -->
+		<div id="footerCntr">
+			<div id="footerCntrouter">
+				<div id="footerCntrleft">Copyright &copy; Company . All Rights Reserved.			
+				</div>
+				<div id="footerCntrright">
+				<a href="#"> Privacy Policy.</a> <a href="privacy.html">Terms of Use.</a> 
+				</div>
+			</div>
+		</div>
+		<!--  \ FOOTER CONTAINER / -->
+
+</div>
+<!--  \ WRAPPER / -->
+
+    </form>
+
+</body>
+
+</html>
